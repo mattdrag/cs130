@@ -1,0 +1,8 @@
+language: cpp
+script: ./test/run_tests.sh
+addons:
+ apt:
+   packages:
+   - libboost-all-dev
+dist: trusty
+sudo: false

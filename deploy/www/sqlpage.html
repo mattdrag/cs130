@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SQL Page</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background: #eee;
+        font-family: Helvetica;
+        color: #333;
+      }
+      h1 {
+        margin-top: 0;
+      }
+      h2 {
+        color: #2980b9;
+      }
+      .main {
+        padding: 20px;
+        margin: 20px auto;
+        width: 70%;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+      }
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+      .code {
+        background-color: rgba(41, 128, 185, 0.1);
+        margin: 10px 0 20px 0;
+        padding: 10px;
+        font-family: monospace;
+      }
+      .text-input {
+        width: 50%;
+      }
+      .submit-input {
+        padding: 0 0 0 10px;
+      }
+      hr {
+        margin: 20px 0;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div class="main">
+
+      <h1>Database Interface</h1>
+
+      <h2>Instructions</h2>
+      This page lets you query and update a MySQL database!
+      To begin, you can execute the following statement into the <b>Query</b> input
+      to see a list of available tables:
+
+      <div class="code">
+        SHOW Tables;
+      </div>
+
+      Let's take a closer look at TestTable! Enter the following into the <b>Query</b> input:
+
+      <div class="code">
+        SELECT * FROM TestTable;
+      </div>
+
+      Now try adding an entry to the table. Enter the following into the <b>Update</b> input:
+
+      <div class="code">
+        INSERT INTO TestTable VALUES ("5", "Shaghayegh");
+      </div>
+
+      Query the database to see the updated table using the <b>Query</b> input:
+
+      <div class="code">
+        SELECT * FROM TestTable;
+      </div>
+
+      Let's say we want to change an entry. You can execute something like the following in
+      the <b>Update</b> input:
+
+      <div class="code">
+        UPDATE TestTable SET name="Valeed" WHERE id=5;
+      </div>
+
+      View your changes using the <b>Query</b> input:
+
+      <div class="code">
+        SELECT * FROM TestTable;
+      </div>
+
+      Now let's delete that last entry using <b>Update</b>:
+
+      <div class="code">
+        DELETE FROM TestTable WHERE id=5;
+      </div>
+
+      <h2>Future changes / modifications</h2>
+      Due to time constraints, this database interface is just a preliminary version.
+      The following features could be added to make it more user-friendly in the future:
+      <ul>
+        <li>
+          Asynchronously update the page when a query is receieved,
+          instead of having to refresh the entire page
+        </li>
+        <li>
+          Combine the query and update inputs into a single input so
+          it's less confusing to the user
+        </li>
+        <li>
+          Display the new contents of the table when it's updated,
+          instead of just an 'Update Success' message
+        </li>
+      </ul>
+
+      <hr>
+
+      <h2>Query</h2>
+      <form role="form" action="/sql/query" method="GET"
+      <form action="/sql/query" method="GET">
+        <input class="text-input" type="text" id="q" name="q" placeholder="Query" autocomplete="off">
+        <input class="submit-input" type="submit" value="Query">
+      </form>
+
+      <h2>Update/Insert/Delete</h2>
+      <form role="form" action="/sql/update" method="GET"
+      <form action="/sql/update" method="GET">
+        <input class="text-input" type="text" id="q" name="q" placeholder="Update" autocomplete="off">
+        <input class="submit-input" type="submit" value="Update">
+      </form>
+

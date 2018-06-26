@@ -1,0 +1,41 @@
+# This is a comment.
+
+port 8080;   # This is also a comment.
+
+threads 4;
+
+path /static1 StaticHandler {
+	root www;
+}
+
+path /sql SqlHandler {
+	root www;
+}
+
+path /static2 StaticHandler {
+	root pics;
+}
+
+path /echo EchoHandler {}
+
+path /status StatusHandler {}
+
+path / ProxyHandler {
+	proxy_pass www.ucla.edu;
+}
+
+# This tests the proxy on another local server hosted at 8081 that you must start.
+path /test ProxyHandler {
+	proxy_pass localhost:8081/example;
+}
+
+path /example ProxyHandler {
+	proxy_pass www.example.com;
+}
+
+path /redirect ProxyHandler {
+	proxy_pass ucla.edu;
+}
+
+# Default response handler if no handlers match.
+default NotFoundHandler {}

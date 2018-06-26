@@ -1,0 +1,13 @@
+> sudo apt-get install mysql-server
+
+> sudo apt-get install libmysqlclient15-dev
+
+> sudo apt-get install libmysql++-dev
+
+> sudo apt-get install libmysqlcppconn-dev
+
+Access mysql, create a new database, create a table or two, go into sql_engine,
+change sql_engine.cpp line 42-44
+mysqlD.user = "root";		// the root user of mysql	
+mysqlD.password = "osboxes"; // the password of the root user in mysql
+mysqlD.database = "DB";	// the databse to pick
